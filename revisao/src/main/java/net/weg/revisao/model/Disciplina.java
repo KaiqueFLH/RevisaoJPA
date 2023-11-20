@@ -1,7 +1,7 @@
 package net.weg.revisao.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,9 +14,12 @@ import java.util.List;
 @Entity
 public class Disciplina {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     @ManyToMany
+    @JsonIgnore
     private List<Professor> listaDeProfessores;
 
 }
